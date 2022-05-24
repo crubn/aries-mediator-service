@@ -16,9 +16,9 @@ services:
     hostname: caddy
     networks:
       - mediator-network
-    # ports: # Uncomment to access caddy outside of containers
-    #   - 2015:2015
-    #   - 2019:2019
+    ports: # Uncomment to access caddy outside of containers
+      - 11040:11040
+      - 2019:2019
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
     healthcheck:
@@ -110,8 +110,8 @@ services:
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     ports: # Uncomment to access mediator outside of containers
       - ${MEDIATOR_AGENT_HTTP_ADMIN_PORT:-3002}:${MEDIATOR_AGENT_HTTP_ADMIN_PORT:-3002}
-      - ${MEDIATOR_AGENT_HTTP_IN_PORT:-3000}:${MEDIATOR_AGENT_HTTP_IN_PORT:-3000}
-      - ${MEDIATOR_AGENT_WS_IN_PORT:-3001}:${MEDIATOR_AGENT_WS_IN_PORT:-3001}
+      # - ${MEDIATOR_AGENT_HTTP_IN_PORT:-3000}:${MEDIATOR_AGENT_HTTP_IN_PORT:-3000}
+      # - ${MEDIATOR_AGENT_WS_IN_PORT:-3001}:${MEDIATOR_AGENT_WS_IN_PORT:-3001}
     networks:
       - mediator-network
     healthcheck:

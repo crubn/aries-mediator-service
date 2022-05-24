@@ -1,5 +1,5 @@
 # Listen on all interfaces, default Caddy port
-:2015 {
+:11040 {
 
 	# This is the pattern that will be used to detect
 	# WebSockets
@@ -10,12 +10,12 @@
 
 	# Handle any traffic that matches the `@websockets` pattern
 	handle @websockets {
-		reverse_proxy http://mediator:3001
+		reverse_proxy http://mediator:11042
 	}
 
 	# Handle all other traffic.
 	handle {
-		reverse_proxy http://mediator:3000
+		reverse_proxy http://mediator:11041
 	}
 
 	# What logs should look like.
